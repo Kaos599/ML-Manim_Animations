@@ -7,6 +7,7 @@ This repository aims to explain and animate complex Machine Learning research pa
 | Research Paper Name                                            | Paper PDF Link                             | Animation Link                                 | Additional Resources                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 |----------------------------------------------------------------|--------------------------------------------|------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding | [PDF](https://arxiv.org/pdf/1810.04805) | [BERT Breakthrough](BERT/media/videos/1080p60/BERTBreakthrough.mp4) | - [BERT Explained: A Complete Guide to Understanding BERT](https://towardsdatascience.com/bert-explained-a-complete-guide-with-theory-and-code-implementation-f6153b81177b)<br/>- [The Illustrated BERT, ELMo, and co. (How NLP Cracked Transfer Learning)](https://jalammar.github.io/illustrated-bert/)<br/>- [Hugging Face Transformers Library (BERT)](https://huggingface.co/docs/transformers/model_doc/bert) |
+| Improving Language Understanding by Generative Pre-training | [PDF](https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf) | [GPT Animation](GPT/media/videos/720p30/GPT_Animation.mp4) | - [The Illustrated GPT-2 (Visualizing Transformer Language Models)](https://jalammar.github.io/illustrated-gpt2/)<br/>- [Hugging Face Transformers Library (GPT)](https://huggingface.co/docs/transformers/model_doc/gpt) |
 
 ## How to Use This Repo
 
@@ -31,6 +32,11 @@ Each animation is typically contained within its own directory (e.g., `BERT/`).
     ```bash
     cd BERT
     manim -pql main.py BERTBreakthrough
+    ```
+    Or to render the GPT animation:
+    ```bash
+    cd GPT
+    manim -pql main.py GPTPaperAnimation
     ```
     *   `-p`: Plays the animation after rendering.
     *   `-q l`: Renders in low quality (for quick previews). Use `-q h` for high quality (1080p) or `-q k` for 4K.
