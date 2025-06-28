@@ -416,11 +416,11 @@ class BERTBreakthrough(Scene):
 
 if __name__ == "__main__":
     # The following config settings are for local rendering.
-    # config.pixel_height = 1080
-    # config.pixel_width = 1920
-    # config.frame_rate = 30
-    # config.leave_progress_bars = True
-    # config.output_file = "BERT_Enhanced_Animation"
+    config.pixel_height = 720
+    config.pixel_width = 1280
+    config.frame_rate = 30
+    config.leave_progress_bars = True
+    config.output_file = "BERT_Enhanced_Animation"
     
     scene = BERTBreakthrough()
     scene.render()
