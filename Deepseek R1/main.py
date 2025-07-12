@@ -6,7 +6,7 @@ config.pixel_height = 1080
 config.pixel_width = 1920
 config.frame_rate = 30
 
-# DeepSeek brand color palette (verified)
+# DeepSeek brand color palette
 DEEPSEEK_BLUE = "#1E40AF"
 DEEPSEEK_TEAL = "#0891B2" 
 DEEPSEEK_LIGHT = "#3B82F6"
@@ -32,7 +32,7 @@ class DeepSeekR1Animation(Scene):
         self.performance_results()   # 48-60s: Results and impact
     
     def paradigm_shift(self):
-        """Scene 1: Traditional supervised learning vs pure RL paradigm"""
+        """Scene 1: Traditional supervised learning vs pure RL paradigm - FIXED"""
         self.clear()
         
         # Scene title
@@ -43,33 +43,33 @@ class DeepSeekR1Animation(Scene):
         self.play(FadeIn(title))
         self.wait(0.8)
         
-        # Traditional approach (left side)
-        trad_title = Text("Traditional Approach", font_size=28, color=ACCENT_RED, weight=BOLD)
-        trad_title.move_to(LEFT * 4.5 + UP * 1.8)
+        # Traditional approach (left side) - REDUCED BOX SIZES
+        trad_title = Text("Traditional Approach", font_size=26, color=ACCENT_RED, weight=BOLD)
+        trad_title.move_to(LEFT * 4.5 + UP * 2.2)
         
         trad_pipeline = VGroup(
-            self.create_pipeline_box("Massive Datasets", ACCENT_RED),
-            Text("↓", font_size=24, color=ACCENT_RED),
-            self.create_pipeline_box("Supervised Fine-tuning", ACCENT_RED),
-            Text("↓", font_size=24, color=ACCENT_RED),
-            self.create_pipeline_box("Limited RL", ACCENT_RED)
+            self.create_pipeline_box("Massive Datasets", ACCENT_RED, reduced_size=True),
+            Text("↓", font_size=20, color=ACCENT_RED),
+            self.create_pipeline_box("Supervised Fine-tuning", ACCENT_RED, reduced_size=True),
+            Text("↓", font_size=20, color=ACCENT_RED),
+            self.create_pipeline_box("Limited RL", ACCENT_RED, reduced_size=True)
         )
-        trad_pipeline.arrange(DOWN, buff=0.3)
-        trad_pipeline.next_to(trad_title, DOWN, buff=0.8)
+        trad_pipeline.arrange(DOWN, buff=0.2)  # Reduced spacing
+        trad_pipeline.next_to(trad_title, DOWN, buff=0.6)
         
-        # DeepSeek-R1 approach (right side)
-        deepseek_title = Text("DeepSeek-R1 Approach", font_size=28, color=DEEPSEEK_BLUE, weight=BOLD)
-        deepseek_title.move_to(RIGHT * 4.5 + UP * 1.8)
+        # DeepSeek-R1 approach (right side) - REDUCED BOX SIZES
+        deepseek_title = Text("DeepSeek-R1 Approach", font_size=26, color=DEEPSEEK_BLUE, weight=BOLD)
+        deepseek_title.move_to(RIGHT * 4.5 + UP * 2.2)
         
         deepseek_pipeline = VGroup(
-            self.create_pipeline_box("Base Model", DEEPSEEK_BLUE),
-            Text("↓", font_size=24, color=DEEPSEEK_BLUE),
-            self.create_pipeline_box("Pure RL Training", DEEPSEEK_BLUE),
-            Text("↓", font_size=24, color=DEEPSEEK_BLUE),
-            self.create_pipeline_box("Reasoning Emergence", DEEPSEEK_BLUE)
+            self.create_pipeline_box("Base Model", DEEPSEEK_BLUE, reduced_size=True),
+            Text("↓", font_size=20, color=DEEPSEEK_BLUE),
+            self.create_pipeline_box("Pure RL Training", DEEPSEEK_BLUE, reduced_size=True),
+            Text("↓", font_size=20, color=DEEPSEEK_BLUE),
+            self.create_pipeline_box("Reasoning Emergence", DEEPSEEK_BLUE, reduced_size=True)
         )
-        deepseek_pipeline.arrange(DOWN, buff=0.3)
-        deepseek_pipeline.next_to(deepseek_title, DOWN, buff=0.8)
+        deepseek_pipeline.arrange(DOWN, buff=0.2)  # Reduced spacing
+        deepseek_pipeline.next_to(deepseek_title, DOWN, buff=0.6)
         
         # Animate both approaches
         self.play(FadeIn(trad_title), FadeIn(deepseek_title))
@@ -79,14 +79,14 @@ class DeepSeekR1Animation(Scene):
         )
         self.wait(1)
         
-        # Performance breakthrough highlight
+        # FIXED: Performance breakthrough highlight - MOVED BELOW BOXES
         breakthrough = Text("AIME 2024: 15.6% → 71.0% through pure RL", 
-                           font_size=24, color=ACCENT_GREEN, weight=BOLD)
-        breakthrough.move_to(DOWN * 2.2)
+                           font_size=22, color=ACCENT_GREEN, weight=BOLD)
+        breakthrough.move_to(DOWN * 1.8)  # Moved lower to avoid overlap
         
         highlight = Text("First model to achieve o1-level reasoning without supervised fine-tuning", 
-                        font_size=18, color=DEEPSEEK_TEAL)
-        highlight.next_to(breakthrough, DOWN, buff=0.4)
+                        font_size=16, color=DEEPSEEK_TEAL)
+        highlight.next_to(breakthrough, DOWN, buff=0.3)
         
         self.play(Write(breakthrough))
         self.play(FadeIn(highlight))
@@ -99,7 +99,7 @@ class DeepSeekR1Animation(Scene):
         self.wait(0.3)
     
     def grpo_algorithm(self):
-        """Scene 2: Group Relative Policy Optimization mechanism"""
+        """Scene 2: Group Relative Policy Optimization mechanism - FIXED"""
         self.clear()
         
         # Algorithm title
@@ -110,48 +110,48 @@ class DeepSeekR1Animation(Scene):
         self.play(FadeIn(algo_title))
         self.wait(0.8)
         
-        # Core equation with annotation
+        # FIXED: Core equation positioned higher to prevent overlap
         equation = MathTex(
             r"A_i = \frac{r_i - \bar{r}}{\sigma_r}",
-            font_size=40,
+            font_size=36,
             color=DEEPSEEK_BLUE
         )
         equation_box = SurroundingRectangle(equation, color=DEEPSEEK_TEAL, 
-                                          fill_opacity=0.1, buff=0.5)
+                                          fill_opacity=0.1, buff=0.4)
         equation_group = VGroup(equation_box, equation)
-        equation_group.move_to(UP * 0.8)
+        equation_group.move_to(UP * 1.8)  # Moved higher
         
         # Mathematical components breakdown
         components = VGroup(
-            Text("A_i = Advantage for response i", font_size=16, color=DEEPSEEK_DARK),
-            Text("r_i = Individual reward", font_size=16, color=DEEPSEEK_DARK),
-            Text("r̄ = Group mean reward", font_size=16, color=DEEPSEEK_DARK),
-            Text("σ_r = Group standard deviation", font_size=16, color=DEEPSEEK_DARK)
+            Text("A_i = Advantage for response i", font_size=15, color=DEEPSEEK_DARK),
+            Text("r_i = Individual reward", font_size=15, color=DEEPSEEK_DARK),
+            Text("r̄ = Group mean reward", font_size=15, color=DEEPSEEK_DARK),
+            Text("σ_r = Group standard deviation", font_size=15, color=DEEPSEEK_DARK)
         )
-        components.arrange(DOWN, buff=0.2, aligned_edge=LEFT)
-        components.next_to(equation_group, DOWN, buff=0.8)
+        components.arrange(DOWN, buff=0.15, aligned_edge=LEFT)
+        components.next_to(equation_group, DOWN, buff=0.6)
         
-        # Group sampling visualization
-        sampling_title = Text("Group Sampling Process", font_size=20, color=DEEPSEEK_TEAL, weight=BOLD)
-        sampling_title.move_to(DOWN * 1.8)
+        # FIXED: Group sampling visualization - repositioned to prevent overlap
+        sampling_title = Text("Group Sampling Process", font_size=18, color=DEEPSEEK_TEAL, weight=BOLD)
+        sampling_title.move_to(DOWN * 0.8)  # Adjusted position
         
         response_groups = VGroup()
         for i in range(4):
-            response_box = Rectangle(width=1.8, height=0.6, color=DEEPSEEK_LIGHT, 
+            response_box = Rectangle(width=1.6, height=0.5, color=DEEPSEEK_LIGHT, 
                                    fill_opacity=0.3, stroke_width=2)
-            response_text = Text(f"Response {i+1}", font_size=14, color=DEEPSEEK_DARK, weight=BOLD)
+            response_text = Text(f"Response {i+1}", font_size=12, color=DEEPSEEK_DARK, weight=BOLD)
             response_item = VGroup(response_box, response_text)
             response_groups.add(response_item)
         
-        response_groups.arrange(RIGHT, buff=0.3)
-        response_groups.next_to(sampling_title, DOWN, buff=0.5)
+        response_groups.arrange(RIGHT, buff=0.25)
+        response_groups.next_to(sampling_title, DOWN, buff=0.4)
         
-        # Key innovation highlight
-        innovation = Text("No critic model needed - uses group statistics for efficiency", 
-                         font_size=18, color=ACCENT_GREEN, weight=BOLD)
-        innovation.to_edge(DOWN, buff=0.8)
+        # FIXED: Key innovation highlight - positioned at bottom
+        innovation = Text("Uses group statistics for efficiency - no critic model needed", 
+                         font_size=16, color=ACCENT_GREEN, weight=BOLD)
+        innovation.move_to(DOWN * 2.8)  # Positioned at bottom to avoid overlap
         
-        # Animate GRPO components
+        # Animate GRPO components with proper spacing
         self.play(FadeIn(equation_group))
         self.play(LaggedStartMap(FadeIn, components, lag_ratio=0.2))
         self.wait(1)
@@ -227,7 +227,7 @@ class DeepSeekR1Animation(Scene):
         self.wait(0.3)
     
     def training_pipeline(self):
-        """Scene 4: Four-stage training process"""
+        """Scene 4: Four-stage training process - FIXED OVERLAPPING AND ARROWS"""
         self.clear()
         
         # Pipeline title
@@ -238,7 +238,7 @@ class DeepSeekR1Animation(Scene):
         self.play(FadeIn(pipeline_title))
         self.wait(0.8)
         
-        # Training stages with proper spacing
+        # FIXED: Training stages with reduced box sizes and proper spacing
         stages = [
             ("Stage 1", "Cold Start", "SFT on curated CoT data", DEEPSEEK_BLUE),
             ("Stage 2", "Reasoning RL", "GRPO with rule-based rewards", DEEPSEEK_TEAL),
@@ -249,28 +249,37 @@ class DeepSeekR1Animation(Scene):
         stage_elements = VGroup()
         stage_arrows = VGroup()
         
+        # FIXED: Reduced box sizes and improved spacing
+        box_width = 3.2  # Reduced from 4
+        box_height = 1.2  # Reduced from 1.4
+        x_spacing = 3.8   # Increased spacing between boxes
+        
         for i, (stage_num, stage_name, description, color) in enumerate(stages):
-            # Stage container
-            stage_box = Rectangle(width=4, height=1.4, color=color, fill_opacity=0.2, stroke_width=2)
-            stage_box.move_to(LEFT * 6 + RIGHT * i * 3.2)
+            # FIXED: Smaller stage containers with better positioning
+            stage_box = Rectangle(width=box_width, height=box_height, color=color, 
+                                fill_opacity=0.2, stroke_width=2)
+            stage_box.move_to(LEFT * 6 + RIGHT * i * x_spacing + UP * 0.5)
             
-            # Stage labels
-            num_text = Text(stage_num, font_size=14, color=color, weight=BOLD)
-            name_text = Text(stage_name, font_size=16, color=color, weight=BOLD)
-            desc_text = Text(description, font_size=12, color=DEEPSEEK_DARK, line_spacing=1.1)
+            # Stage labels with adjusted font sizes
+            num_text = Text(stage_num, font_size=13, color=color, weight=BOLD)
+            name_text = Text(stage_name, font_size=15, color=color, weight=BOLD)
+            desc_text = Text(description, font_size=11, color=DEEPSEEK_DARK, line_spacing=1.1)
             
             stage_content = VGroup(num_text, name_text, desc_text)
-            stage_content.arrange(DOWN, buff=0.1)
+            stage_content.arrange(DOWN, buff=0.08)
             stage_content.move_to(stage_box.get_center())
             
             stage_item = VGroup(stage_box, stage_content)
             stage_elements.add(stage_item)
             
-            # Arrow between stages
+            # FIXED: Correct arrow direction (left to right between stages)
             if i < len(stages) - 1:
+                start_point = stage_box.get_right() + RIGHT * 0.1
+                end_point = LEFT * 6 + RIGHT * (i + 1) * x_spacing + LEFT * (box_width/2) + LEFT * 0.1 + UP * 0.5
+                
                 arrow = Arrow(
-                    start=stage_box.get_right() + RIGHT * 0.1,
-                    end=LEFT * 6 + RIGHT * (i + 1) * 3.2 + LEFT * 2 + LEFT * 0.1,
+                    start=start_point,
+                    end=end_point,
                     color=DEEPSEEK_DARK,
                     stroke_width=3
                 )
@@ -279,9 +288,9 @@ class DeepSeekR1Animation(Scene):
         # Key achievement
         achievement = Text("Language consistency through reward engineering", 
                           font_size=18, color=ACCENT_ORANGE, weight=BOLD)
-        achievement.to_edge(DOWN, buff=0.8)
+        achievement.move_to(DOWN * 2.2)  # Positioned below the pipeline
         
-        # Animate pipeline construction
+        # Animate pipeline construction with fixed spacing
         self.play(LaggedStartMap(FadeIn, stage_elements, lag_ratio=0.3))
         self.play(LaggedStartMap(GrowArrow, stage_arrows, lag_ratio=0.2))
         self.wait(1)
@@ -363,10 +372,14 @@ class DeepSeekR1Animation(Scene):
         self.play(FadeOut(VGroup(results_title, distillation_title, distillation_points, impact)))
         self.wait(0.5)
     
-    def create_pipeline_box(self, text, color):
-        """Helper function to create consistent pipeline boxes"""
-        box = Rectangle(width=3, height=0.8, color=color, fill_opacity=0.2, stroke_width=2)
-        label = Text(text, font_size=14, color=color, weight=BOLD)
+    def create_pipeline_box(self, text, color, reduced_size=False):
+        """Helper function to create consistent pipeline boxes with size options"""
+        if reduced_size:
+            box = Rectangle(width=2.5, height=0.6, color=color, fill_opacity=0.2, stroke_width=2)
+            label = Text(text, font_size=12, color=color, weight=BOLD)
+        else:
+            box = Rectangle(width=3, height=0.8, color=color, fill_opacity=0.2, stroke_width=2)
+            label = Text(text, font_size=14, color=color, weight=BOLD)
         return VGroup(box, label)
 
 if __name__ == "__main__":
