@@ -47,7 +47,7 @@ Each animation is typically contained within its own directory (e.g., `BERT/`).
 
     The rendered video will be saved in `BERT/media/videos/1080p60/` (or similar, depending on quality settings).
 
-## Contributing
+## Contributing 
 
 Contributions are welcome! If you'd like to contribute an animation for a research paper:
 
